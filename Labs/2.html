@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+    var mob_num = prompt("Enter your phone number","XXYYYZZZ")
+    op_num = mob_num.at(1)
+    console.log("0"+mob_num.substring(0,2)+"/"+mob_num.substring(2,5)+"-"+mob_num.substring(5))
+
+    if (op_num == 0 || op_num == 1 || op_num == 2){
+      console.log("Telekom")
+    } else if (op_num == 5 || op_num == 6){
+      console.log("One")
+    } else if (op_num == 7 || op_num == 8){
+      console.log("Vip")
+    } else {
+      console.log("Unknown")
+    }
+  </script>
+</body>
+</html>

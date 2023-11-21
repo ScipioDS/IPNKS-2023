@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Marathon</title>
+</head>
+
+<body>
+<h1>Participants</h1>
+<div>
+    <label>Name</label><input type="text" id="1"><br>
+    <label>Surname</label><input type="text" id="2"><br>
+    <label>Years</label><input type="text" id="3"><br>
+    <label>Code</label><input type="text" id="4"><br>
+    <label>Sex</label>
+    <select id="5">
+        <option>Male</option>
+        <option>Female</option>
+    </select><br>
+    <button id="addy" onclick="add_participant()">Add Participant</button>
+</div>
+<div><h2>Confirmed participants = <span id="par_counter"></span></h2></div>
+<div>
+    <table>
+        <thead>
+        <tr><th>Name</th><th>Surname</th><th>Code</th><th colspan="2">Options</th></tr>
+        </thead>
+        <tbody id="table">
+
+        </tbody>
+    </table>
+</div>
+</body>
+
+<style>
+    table{
+        margin-top: 50px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th,td{
+        width: 100px;
+        text-align: center;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    label{
+        margin-top: 5px;
+        display: inline-block;
+        width: 100px;
+    }
+    #addy{
+        margin-top: 10px;
+        margin-left: 165px;
+    }
+</style>
+
+<script>
+    var counter = 0;
+    function add_participant(){
+        var name = document.getElementById("1").value
+        var surname = document.getElementById("2").value
+        var years = document.getElementById("3").value
+        var code = document.getElementById("4").value
+        var sex = document.getElementById("5").value
+
+        if (name == '' || surname == '' || (isNaN(years) || years == '') || code == ''){
+            alert("Enter the correct information")
+            return false
+        }
+
+        var tag = ''
+        for (let i = 0; i < code.length; i++) {
+            if (isNaN(code.charAt(i))){
+                if (code.charAt(i)>='A' && code.charAt(i)<='Z'){
+                    tag+=code.charAt(i).toLowerCase()
+                } else {
+                    tag+=code.charAt(i).toUpperCase()
+                }
+            } else if (code.charAt(i)<=5){
+                tag+=code.charAt(i)
+            }
+        }
+
+        var row = document.createElement("tr")
+        var table = document.getElementById("table")
+        if (years >= 18){
+            row.innerHTML = "<td>"+name+"</td>" +
+                    "<td>"+surname+"</td>" + "<td>"+tag+"</td>" +
+                    "<td><button onclick='confirm_par(this)'>Confirm</button></td>" + "<td><button onclick='delete_par(this)'>Delete</button></td>";
+        } else {
+            row.innerHTML = "<td>"+name+"</td>" +
+                "<td>"+surname+"</td>" + "<td>"+tag+"</td>" +
+                "<td></td>" + "<td></td>";
+        }
+        if (sex == 'Male'){
+            row.style.background = "lightblue"
+        } else if (sex == 'Female'){
+            row.style.background = "pink"
+        }
+
+        table.append(row)
+
+        document.getElementById("1").value = ""
+        document.getElementById("2").value = ""
+        document.getElementById("3").value = ""
+        document.getElementById("4").value = ""
+    }
+    function confirm_par(elem){
+        elem.parentNode.parentNode.lastElementChild.firstChild.remove()
+        elem.remove()
+        counter++
+        document.getElementById("par_counter").innerHTML = "" + counter
+    }
+    function delete_par(elem){
+        elem.parentNode.parentNode.innerHTML=''
+    }
+
+</script>
+
+</html>

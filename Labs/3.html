@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+    var str1 = prompt("Enter your first string")
+    var str2 = prompt("Enter your second string")
+    var str3 = prompt("Enter your third string")
+
+    split_str1 = str1.split(' ')
+    split_str2 = str2.split(' ')
+    split_str3 = str3.split(' ')
+
+    var word = 0
+    var length = 0
+    for (let i = 0; i < split_str1.length; i++) {
+      if (split_str1[i].length > length){
+        word = split_str1[i]
+        length = split_str1[i].length
+      }
+    }
+    for (let i = 0; i < split_str2.length; i++) {
+      if (split_str2[i].length > length){
+        word = split_str2[i]
+        length = split_str2[i].length
+      }
+    }
+    for (let i = 0; i < split_str3.length; i++) {
+      if (split_str3[i].length > length){
+        word = split_str3[i]
+        length = split_str3[i].length
+      }
+    }
+    alert(word)
+  </script>
+</body>
+</html>

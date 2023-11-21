@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h1>
+    Регистрација на лет
+  </h1>
+  <label>Име и презиме </label><input id="name" type="text"><br>
+  <label>Ознака на летало </label><input id="number" type="text"><br>
+  <label>Координати на лет </label><input id="coords" type="text"><br>
+  <label>Радиус на лет </label><input id="radius" type="text"><br>
+  <label>Висина на лет </label><input id="height" type="text"><br>
+  <select id="type">
+    <option id="drone">
+      Дрон
+    </option>
+    <option id="glider">
+      Едрилица
+    </option>
+  </select>
+  <br>
+  <button onclick="add_flight()">Најави</button>
+  <h2>
+    Регистрирани летови
+  </h2>
+  <p>Вкупно најавени летови<span id="counter"></span></p>
+<ul id="list"></ul>
+</body>
+  <script>
+    var counter = 0;
+    function add_flight(){
+      var name = document.getElementById("name").value
+      var number = document.getElementById("number").value
+      var coords = document.getElementById("coords").value
+      var radius = document.getElementById("radius").value
+      var height = document.getElementById("height").value
+      var type = document.getElementById("type").value
+      counter++
+      document.getElementById("counter").innerHTML =" " + counter
+      document.getElementById("list").innerHTML += "<li>"+name+", "+number+"<br>"+"Радиус:"+radius+"Висина:"+height+"<br>"+type+"<br>"+"<button onclick='colour(this)'>Потврди</button>"+"<button>Откажи</button>"+"</li>"
+    }
+    function colour(o){
+      let parent = o.parentNode
+      parent.style.background = "green"
+    }
+  </script>
+</html>

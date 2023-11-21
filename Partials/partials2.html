@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<h1>
+  Регистрација на лет
+</h1>
+<div id="1">
+  <label class="labels">Име </label><input id="name" type="text"><br>
+  <label class="labels">Презиме </label><input id="surname" type="text"><br>
+  <label class="labels">Регистарски таблици </label><input id="plates" type="text"><br>
+  <label class="labels">Години на старост </label><input id="years" type="text"><br>
+  <label class="labels">Сообраќајна незгода </label>
+</div>
+
+<label>Да </label>
+<input name="same" id="yes" type="radio">
+<label>Не </label>
+<input name="same" id="no" type="radio">
+<br>
+<button onclick="add()">Најави</button>
+<h2>
+  Сметки
+</h2>
+<p>Вкупно сметки за плаќање<span id="counter"></span></p>
+<div id="reciepts"></div>
+
+</body>
+
+<script>
+  function add(){
+    var name = document.getElementById("name").value;
+    var surname = document.getElementById("surname").value;
+    var plates = document.getElementById("plates").value;
+    var years = document.getElementById("years").value;
+    var yes = document.getElementById("yes");
+    var no = document.getElementById("no");
+    var cost = 3000
+
+    if (name== "" || surname=="" || plates=="" || years=="" || (yes.checked==false && no.checked==false) ){
+      alert("Внеси се!")
+      return
+    }
+    if (!format(plates)){
+      alert("FORMAT")
+      return;
+    }
+    if (plates.at(3)==plates.at(4) && plates.at(4)==plates.at(5) && plates.at(5)==plates.at(6)) {
+      cost += 1000
+    }
+    if (yes.checked == true){
+      var check = "Има"
+    } else {
+      var check = "Нема"
+      cost +=500
+    }
+
+    var divvy = document.createElement("div")
+    divvy.innerHTML = "<p>" + name + " " + surname + "</p>" + "<p>" + plates + "</p>" + "<p>" + "Сообраќајќи: " + check + "</p>" + "<p>" + "Старост: " + years + "</p>" + "<p>" + cost + "</p>" + "<button onclick='pay(this)' id='pay'>Плати</button>" + "<button onclick='del(this)' id='delete'>Избриши</button>";
+    divvy.setAttribute("class","reccy")
+    if (years<30){
+      divvy.style.background = "lightgreen"
+    } else {
+      divvy.style.background = "red"
+    }
+
+    var list = document.getElementById("reciepts")
+    list.append(divvy)
+  }
+
+  function format(plate){
+    var regex = /^[A-Z][A-Z]-[0-9][0-9][0-9][0-9]-[A-Z][A-Z]$/
+    if (regex.test(plate)){
+      return true;
+    } else {
+      return false;
+    }
+  }
+  function pay(o){
+    o.nextSibling.remove()
+    o.remove()
+  }
+  function del(o){
+    var pr = o.parentNode
+    pr.remove()
+  }
+
+</script>
+
+<style>
+  .labels{
+    display: inline-block;
+    width: 200px;
+  }
+  .reccy{
+    display: inline-block;
+    width: 200px;
+    height: 300px;
+    border: 5px black;
+    margin: 10px;
+  }
+  #reciepts{
+    display: flow;
+  }
+</style>
+
+</html>

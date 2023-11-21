@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <label for="Height">Height </label><input type="text" name="Height" id="Height" required>
+  <label for="Weight">Weight </label><input type="text" name="Weight" id="Weight" required>
+  <button onclick="calc()" value="Calculate" id="submit"> Calculate </button>
+</body>
+<script>
+  function calc(){
+    var bmi = 0;
+    var height = document.getElementById("Height").value
+    console.log(height)
+    var weight = document.getElementById("Weight").value
+    console.log(weight)
+    height/=100
+    height*=height
+    console.log(height)
+    bmi = weight / height
+    alert(bmi)
+  }
+</script>
+</html>

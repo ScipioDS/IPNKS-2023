@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flip</title>
+</head>
+<body>
+  <input id="number" type="text">
+  <button id="right" onclick="move('left')"> < </button>
+  <button id="left" onclick="move('right')"> > </button>
+  <button id="flip" onclick="flip()"> FLIP </button>
+  <button id="store" onclick="add_num()"> STORE </button>
+  <ul id="list"></ul>
+
+</body>
+
+<script>
+  function flip(){
+    var number = document.getElementById("number").value
+    if(check(number)){
+        var result = 0;
+        for (let i = 0; i < 10; i++) {
+            var digit = number%10;
+            if (digit!=0){
+                result = Math.floor(result * 10 + digit)
+            } else {
+                result = Math.floor(result*10)
+            }
+
+            number/=10;
+        }
+    }
+    document.getElementById("number").value = result
+  }
+  function move(direction){
+      var number = document.getElementById("number").value
+      if (direction=='left'){
+          var digit = number / 1000000000
+          var rest = number % 1000000000
+          rest = Math.floor(rest*10 + digit)
+          document.getElementById("number").value = rest
+      } else if (direction=='right') {
+          var digit = number%10
+          number/=10
+          digit = Math.floor(digit * 1000000000 + number)
+          document.getElementById("number").value = digit
+      }
+  }
+  function add_num(){
+      var number = document.getElementById("number").value
+      if (check(number)){
+          var list = document.getElementById("list")
+          list.innerHTML += "<li>"+number+"</li>"
+      }
+  }
+  function check(number){
+    if (isNaN(number)){
+      alert("Enter a number")
+      return false
+    } else if (number.length < 10) {
+      alert("Enter a 10 digit number")
+      return false
+    } else {
+      return true
+    }
+  }
+</script>
+
+</html>

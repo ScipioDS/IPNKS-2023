@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+<script>
+var number = prompt("Enter 4 digit number:","XXXX");
+
+var divider = 0;
+var nn = number;
+for (let i = 0; i < 4; i++) {
+  divider += nn % 10;
+  nn=Math.floor(nn/10);
+}
+divider = number % divider;
+if (number < 1000 || number > 9999){
+  alert("Not a 4 digit number")
+} else if(number.at(0) == number.at(3) && number.at(1) == number.at(2)){
+    if(divider == 0){
+    alert("Palindrome & divisible")
+  } else {
+    alert("Only palindrome")
+  }
+} else if (divider == 0) {
+  alert("Only divisible")
+} else {
+  alert("Neither")
+}
+</script>
+</body>
+</html>
