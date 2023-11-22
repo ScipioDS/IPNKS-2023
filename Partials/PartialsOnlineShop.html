@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Shop</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            padding: 0 100px 0 100px;
+        }
+        #header{
+            align-self: center;
+        }
+        label{
+            display: inline-block;
+            width: 150px;
+        }
+        input,select{
+            display: inline-block;
+            width: 200px;
+        }
+        #tables > div{
+            display: inline-block;
+        }
+        table,th,td{
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"><h1>Online Shop</h1></div>
+
+    <div>
+        <label>Name and Surname</label><input type="text" id="name"><br>
+
+        <label>Item</label><input type="text" id="item"><br>
+
+        <label>Item code</label><input type="text" id="icode"><br>
+
+        <label>Item description</label><input type="text" id="idesc"><br>
+
+        <label>Price</label><input type="text" id="price"><br>
+
+        <label>Used</label>
+        <select id="use_select">
+            <option>Used</option>
+            <option>Unused</option>
+        </select><br>
+
+        <button onclick="add_item()">Add</button>
+    </div>
+
+    <div>
+        <p>Active items <b id="active_items"></b></p>
+    </div>
+
+    <div id="tables">
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Code</th>
+                        <th>Number</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="Used">
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Code</th>
+                    <th>Number</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="Unused">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+<script>
+    var active_items = 0
+    var active_item_codes = []
+
+    function check_items(icode){
+        for (let i = 0; i < active_items; i++) {
+            if (icode == active_item_codes[i]){
+                return true
+            }
+        }
+        active_item_codes[active_items++] = icode
+        document.getElementById("active_items").innerHTML=active_items
+        return false
+
+    }
+
+    function add_item(){
+        var name = document.getElementById("name").value
+        var item = document.getElementById("item").value
+        var icode = document.getElementById("icode").value
+        var idesc = document.getElementById("idesc").value
+        var price = document.getElementById("price").value
+        var use_select = document.getElementById("use_select").value
+
+        if (name == "" || item == "" || icode == "" || idesc == "" || (price == "" || isNaN(price) || price<0)){
+            alert("Enter all fields properly")
+            return;
+        }
+
+        if(check_items(icode)){
+            alert("Item already exists")
+            return;
+        }
+
+        var tag = ''
+        for (let i = 0; i < icode.length; i++) {
+            if (isNaN(icode.charAt(i)) && icode.charAt(i)!='!'){
+                tag+=icode.charAt(i)
+            }
+        }
+
+        var table = document.getElementById(use_select)
+        var row = document.createElement("tr")
+
+        row.innerHTML = "<td>"+name+"</td>" + "<td>"+item+"</td>" + "<td>"+price+"</td>" + "<td>"+icode+"</td>" + "<td>"+tag+"</td>" + "<td><button onclick='sell(this)'>Sell</button></td>"
+        table.append(row)
+    }
+    function isAl(obj){
+        return /^[a-zA-Z]+$/.test(obj)
+    }
+    function sell(obj){
+        var tr = obj.parentNode.parentNode
+        tr.style.background = "yellow"
+        obj.remove()
+        active_items--;
+        document.getElementById("active_items").innerHTML=active_items
+    }
+</script>
+</html>
