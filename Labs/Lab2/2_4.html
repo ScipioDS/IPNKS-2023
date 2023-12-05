@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Complex numbers</title>
+</head>
+<body>
+    <input type="text" class="1"><input type="text" class="1"><p>i</p>
+    <br>
+    <input type="text" class="2"><input type="text" class="2"><p>i</p>
+    <br>
+    <button onclick="addcomplex()">Add</button>
+    <br>
+    <input type="text" disabled class="3"><input type="text" disabled class="3"><p>i</p>
+</body>
+<style>
+  input{
+    display: inline-block;
+    width: 50px;
+  }
+  p{
+    display: inline-block;
+    margin-left: 5px;
+  }
+</style>
+<script>
+  function addcomplex(){
+
+    document.getElementsByClassName("3")[0].value =
+            parseInt(document.getElementsByClassName("1")[0].value) + parseInt(document.getElementsByClassName("2")[0].value)
+    document.getElementsByClassName("3")[1].value =
+            parseInt(document.getElementsByClassName("1")[1].value) + parseInt(document.getElementsByClassName("2")[1].value)
+
+  }
+</script>
+</html>

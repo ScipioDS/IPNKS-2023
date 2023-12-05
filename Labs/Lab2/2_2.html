@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random</title>
+    <style>
+        body{
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <script>
+        function changephoto(){
+            var selecter = Math.floor(Math.random() * (4 - 1)) + 1;
+            if (selecter == 1){
+                document.getElementById("img").setAttribute("src","Photos/free-photos-1.jpg")
+            } else if (selecter == 2){
+                document.getElementById("img").setAttribute("src","Photos/free-photos-2.jpg")
+            } else {
+                document.getElementById("img").setAttribute("src","Photos/free-photos-3.jpg")
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <button onclick="changephoto()">Click me!</button>
+    <img id="img">
+</body>
+</html>
