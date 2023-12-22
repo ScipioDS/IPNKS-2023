@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+</head>
+<body>
+
+</body>
+<script>
+  let library = [
+    {
+      title: '1984',
+      author: 'George Orwell',
+      readingStatus: true
+    },
+    {
+      title: 'Lord of The Rings',
+      author: 'J.R.R. Tolkein',
+      readingStatus: false
+    },
+    {
+      title: 'American Gods',
+      author: 'Neil Gaimen',
+      readingStatus: true
+    }
+  ]
+  for (let i = 0; i < library.length; i++) {
+    let book = " " + library[i].title + " by " + library[i].author
+    if (library[i].readingStatus){
+      console.log("You've read" + book)
+    } else {
+      console.log("You still need to read" + book)
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array Duplicate Deleter</title>
+</head>
+<body>
+
+</body>
+<script>
+  function duplicateDelete(array){
+    if (!Array.isArray(array)) return "Error";
+    let result = [];
+    for (let i = 0; i < array.length; i++) {
+      var flag = true;
+      for (let j = 0; j < result.length; j++) {
+        if (array[i]==result[j]){
+          flag = false;
+          break;
+        }
+      }
+      if (flag){
+        result.push(array[i]);
+      }
+    }
+    return result;
+  }
+  console.log(duplicateDelete([12,12,12,1]))
+</script>
+</html>

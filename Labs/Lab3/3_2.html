@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove selected</title>
+</head>
+<body>
+
+</body>
+<script>
+  function removeArrayElement(array,element){
+    if (!Array.isArray(array)) return "Error";
+    for (let i = 0; i < array.length; i++) {
+      if (array[i]==element){
+        array.splice(i,1)
+      }
+    }
+    return array;
+  }
+  console.log(removeArrayElement([1,2,3,4,12,23,12,23,1],12))
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Volume of a Cylinder</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Cylinder(radius, height){
+      this.radius = radius
+      this.height = height
+
+      this.volume = function (){
+        return 3.14 * radius*radius * height;
+      }
+    }
+    let Cy = new Cylinder(2,1)
+    console.log(Cy.volume())
+</script>
+</html>
