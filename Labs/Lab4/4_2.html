@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check or Radio</title>
+</head>
+<body>
+    <label>Items: </label><input type="text" id="2t"><br>
+    <label>Type:  </label>
+    <select id="2s">
+        <option>
+            Radio Button
+        </option>
+        <option>
+            Check Box
+        </option>
+    </select>
+    <br>
+    <button onclick="show_choice()">Show</button><br>
+    <div id="2d">
+
+    </div>
+</body>
+<script>
+    function show_choice(){
+        var elements = document.getElementById("2t").value.split(",")
+        var divvy = document.getElementById("2d")
+        var selection = document.getElementById("2s").value
+        var divElement = document.createElement("div")
+        if (selection == "Radio Button"){
+            for (let i = 0; i < elements.length; i++) {
+                var inputElement = document.createElement("input")
+                inputElement.setAttribute("type","radio")
+                var labelElement = document.createElement("label")
+                labelElement.innerText = elements[i]
+
+                divElement.append(labelElement)
+                divElement.append(inputElement)
+            }
+        } else {
+            for (let i = 0; i < elements.length; i++) {
+                var inputElement = document.createElement("input")
+                inputElement.setAttribute("type","checkbox")
+                var labelElement = document.createElement("label")
+                labelElement.innerText = elements[i]
+
+                divElement.append(labelElement)
+                divElement.append(inputElement)
+            }
+        }
+        divvy.append(divElement)
+
+    }
+</script>
+</html>

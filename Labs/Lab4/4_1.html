@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Grades Here</title>
+</head>
+<body>
+  <label>Name: </label><input type="text" id="1n"><br>
+  <label>Surname: </label><input type="text" id="1s"><br>
+  <label>Index: </label><input type="text" id="1i"><br>
+  <label>Subject: </label><input type="text" id="1su"><br>
+  <label>Grade: </label><select id="1g">
+    <option>5 (five)</option>
+    <option>6 (six)</option>
+    <option>7 (seven)</option>
+    <option>8 (eight)</option>
+    <option>9 (nine)</option>
+    <option>10 (ten)</option>
+  </select>
+  <br>
+  <button onclick="add_grade()">Add!</button>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Index</th>
+        <th>Subject</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody id="1table">
+
+    </tbody>
+  </table>
+</body>
+<style>
+  label{
+    display: inline-block;
+    width: 100px;
+  }
+  td,th{
+    width: 60px;
+  }
+  table,td,th{
+    border: solid black 1px;
+    border-collapse: collapse;
+  }
+</style>
+<script>
+  function Grade(name,surname,index,subject,grade){
+    this.name = name;
+    this.surname = surname;
+    this.index = index;
+    this.subject = subject;
+    this.grade = grade;
+  }
+  var grades = []
+  function add_grade(){
+    var name = document.getElementById("1n").value
+    var surname = document.getElementById("1s").value
+    var index = document.getElementById("1i").value
+    var subject = document.getElementById("1su").value
+    var grade = document.getElementById("1g").value
+
+    grades.push(new Grade(name,surname,index,subject,grade))
+
+    var row = document.createElement("tr")
+    var table = document.getElementById("1table")
+    row.innerHTML+="<td>"+name+"</td>" + "<td>"+surname+"</td>" + "<td>"+index+"</td>" + "<td>"+subject+"</td>" + "<td>"+grade+"</td>"
+
+    table.append(row)
+    document.getElementById("1n").value = ""
+    document.getElementById("1s").value = ""
+    document.getElementById("1i").value = ""
+    document.getElementById("1su").value = ""
+    document.getElementById("1g").value = ""
+  }
+</script>
+</html>

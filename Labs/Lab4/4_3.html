@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Background changer</title>
+</head>
+<body>
+  <label>Color</label><input type="radio" name="bgtype" value="color" id="3c">
+  <label>Image</label><input type="radio" name="bgtype" value="image" id="3i">
+  <br>
+  <input type="text" id="3in"><br>
+  <button onclick="bgadd()">Add BG</button>
+</body>
+<script>
+  function bgadd(){
+    if (document.getElementById("3c").checked){
+      document.getElementsByTagName("body")[0].setAttribute("bgcolor",document.getElementById("3in").value)
+    } else if (document.getElementById("3i").checked) {
+      document.getElementsByTagName("body")[0].setAttribute("background",document.getElementById("3in").value)
+    }
+  }
+</script>
+</html>
