@@ -1,0 +1,36 @@
+{
+  "pictures": [
+    {
+      "name": "aw",
+      "src": "Photos/aw.jpg"
+    },
+    {
+      "name": "gv",
+      "src": "Photos/gv.jpg"
+    },
+    {
+      "name": "ka",
+      "src": "Photos/ka.jpg"
+    },
+    {
+      "name": "l",
+      "src": "Photos/l.jpg"
+    },
+    {
+      "name": "lts",
+      "src": "Photos/lts.jpeg"
+    },
+    {
+      "name": "ms",
+      "src": "Photos/ms.jpg"
+    },
+    {
+      "name": "tz",
+      "src": "Photos/tz.jpg"
+    },
+    {
+      "name": "uw",
+      "src": "Photos/uw.jpg"
+    }
+  ]
+}

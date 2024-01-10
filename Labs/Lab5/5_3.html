@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script>
+    reset_mem()
+    function reset_mem(){
+      var list = document.getElementsByTagName("img")
+      for (let i = 0; i < list.length; i++) {
+        list[i].src = "Photos/questionmark.png"
+      }
+    }
+    var firstcard = document.getElementById("11");
+    var secondcard;
+    function swapsies(){
+      firstcard.src = "Photos/questionmark.png"
+      firstcard = secondcard;
+    }
+    function open_card(num){
+      if (num==11 || num==23){
+        swapsies()
+        secondcard = document.getElementById(num.toString()).firstChild
+        secondcard.src = "Photos/aw.jpg"
+      } else if (num==12 || num==42){
+
+      } else if (num==13 || num==31){
+
+      } else if (num==14 || num==44){
+
+      } else if (num==21 || num==24){
+
+      } else if (num==22 || num==33){
+
+      } else if (num==32 || num==43){
+
+      } else if (num==34 || num==41){
+
+      }
+    }
+
+  </script>
+  <style>
+    img{
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+<h1>Meморија</h1>
+<div style="text-align:left; float:left">
+  <table border="1">
+    <tr>
+      <td id="11"><img onclick="open_card(11)" src=""/></td>
+      <td id="12"><img onclick="open_card(12)" src=""/></td>
+      <td id="13"><img onclick="open_card(13)" src=""/></td>
+      <td id="14"><img onclick="open_card(14)" src=""/></td>
+    </tr>
+    <tr>
+      <td id="21"><img onclick="open_card(21)" src=""/></td>
+      <td id="22"><img onclick="open_card(22)" src=""/></td>
+      <td id="23"><img onclick="open_card(23)" src=""/></td>
+      <td id="24"><img onclick="open_card(24)" src=""/></td></tr>
+    <tr>
+      <td id="31"><img onclick="open_card(31)" src=""/></td>
+      <td id="32"><img onclick="open_card(32)" src=""/></td>
+      <td id="33"><img onclick="open_card(33)" src=""/></td>
+      <td id="34"><img onclick="open_card(34)" src=""/></td>
+    </tr>
+    <tr>
+      <td id="41"><img onclick="open_card(41)" src=""/></td>
+      <td id="42"><img onclick="open_card(42)" src=""/></td>
+      <td id="43"><img onclick="open_card(43)" src=""/></td>
+      <td id="44"><img onclick="open_card(44)" src=""/></td>
+    </tr>
+  </table>
+  <input type="submit" value="RESET" onclick="reset_mem()"/>
+</div>
+<br/>
+</body>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<head>
+  <script>
+  </script>
+</head>
+<body>
+<h1>Калкулатор</h1>
+<div>
+  <div style="text-align:left; float:left">
+    <p>а <input id="a" style="width:15px"/>
+      b <input id="b" style="width:15px"/></p>
+    <p>
+      <input id="plus" type="radio" name="oper" checked>a+b
+      <input id="minus" type="radio" name="oper">a-b
+      <input id="mnoz" type="radio" name="oper" >a*b
+      <input id="del" type="radio" name="oper" >a/b
+      <br>
+      <input id="sin" type="radio" name="oper">sin(a)
+      <input id="cos" type="radio" name="oper">cos(a)
+      <input id="tg" type="radio" name="oper">tg(a)
+      <br>
+      <input id="cel" type="radio" name="oper">[a]
+      <input id="stepen" type="radio" name="oper">a<sup>b</sup>
+      <input id="koren" type="radio" name="oper">&radic;<span style="text-decoration:
+overline">a</span>
+    </p>
+    <button onclick="calculate()">Пресметај</button>
+    <p id="rezultat"></p>
+  </div>
+</div>
+<br/>
+</body>
+<script>
+  function calculate(){
+    var a = parseFloat(document.getElementById("a").value);
+    var b = parseFloat(document.getElementById("b").value);
+
+    if (document.getElementById("plus").checked){
+      document.getElementById("rezultat").innerText = a + b
+    } else if (document.getElementById("minus").checked){
+      document.getElementById("rezultat").innerText = a - b
+    } else if (document.getElementById("mnoz").checked){
+      document.getElementById("rezultat").innerText = a * b
+    } else if (document.getElementById("del").checked){
+      document.getElementById("rezultat").innerText = a / b
+    } else if (document.getElementById("sin").checked){
+      document.getElementById("rezultat").innerText = Math.sin(a)
+    } else if (document.getElementById("cos").checked){
+      document.getElementById("rezultat").innerText = Math.cos(a)
+    } else if (document.getElementById("tg").checked){
+      document.getElementById("rezultat").innerText = Math.tan(a)
+    } else if (document.getElementById("cel").checked){
+      if (a%1<0.5){
+        document.getElementById("rezultat").innerText = Math.floor(a)
+      } else {
+        document.getElementById("rezultat").innerText = Math.ceil(a)
+      }
+    } else if (document.getElementById("stepen").checked){
+      var rez_a = a;
+      for (let i = 1; i < b; i++) {
+        rez_a*=a;
+      }
+      document.getElementById("rezultat").innerText = rez_a
+    } else if (document.getElementById("koren").checked){
+      document.getElementById("rezultat").innerText = Math.sqrt(a)
+    }
+  }
+</script>
+</html>

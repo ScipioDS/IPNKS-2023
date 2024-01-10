@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <script>
+  </script>
+</head>
+<body>
+<div>
+  <div style="text-align:right; float:left">
+    <label id="obid">Обиди 0</label>
+    <p>Погодок: <input id="guess" style="width:150px"/></p>
+    <button onclick="guess()">Погоди</button>
+    <button onclick="guess_reset()">Од почеток</button>
+  </div>
+</div>
+<br/>
+<div id="prikaz" style="clear: both">
+</div>
+</body>
+<script>
+  var num_to_guess;
+  var guesses = 0;
+  var flag = false;
+  function guess(){
+    if (num_to_guess==null){
+      guess_reset();
+    }
+
+    guesses++;
+    if (guesses>10 || flag){
+      guess_reset()
+      guesses++;
+    }
+
+    var checker = document.getElementById("guess").value.split("")
+    var num_guessed = num_to_guess.toString().split("")
+
+    var there = 0;
+    var in_place = 0;
+
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        if (num_guessed[i]==checker[j]){
+          if (i==j){
+            in_place++;
+          }else {
+            there++;
+          }
+          continue
+        }
+      }
+    }
+
+    document.getElementById("obid").innerText = "Обиди " + guesses
+    var p = document.createElement("p").innerText = "Има " + there + ", на место " + in_place
+    document.getElementById("prikaz").append(p)
+    document.getElementById("prikaz").append(document.createElement("br"))
+    console.log(there, in_place)
+
+    if (in_place==4){
+      var win = document.createElement("p").innerText = "ПОГОДОК!"
+      document.getElementById("prikaz").append(win)
+      flag = true;
+    }
+    if (guesses==10){
+      if (in_place==4){
+        var win = document.createElement("p").innerText = "ПОГОДОК!"
+        document.getElementById("prikaz").append(win)
+      } else {
+        var fail = document.createElement("p").innerText = "Не успеавте, бројот беше " + num_to_guess
+        document.getElementById("prikaz").append(fail)
+      }
+    }
+  }
+  function guess_reset(){
+    num_to_guess = Math.floor(Math.random()*10000)
+    while (num_to_guess<1000){
+      num_to_guess = Math.floor(Math.random()*10000)
+    }
+    guesses = 0;
+    document.getElementById("prikaz").innerHTML =""
+    flag = false;
+    console.log(num_to_guess)
+  }
+</script>
+</html>
