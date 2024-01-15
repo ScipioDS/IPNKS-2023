@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <p>Colours</p>
+  <input id="colours" type="text">
+  <p>Delimiter</p>
+  <input id="delimiter" type="text">
+  <br>
+  <button onclick="draw()">Draw</button>
+  <br>
+  <div id="plotter"></div>
+</body>
+<style>
+  .shap{
+    width: 50px;
+    height: 50px;
+    float: left;
+  }
+</style>
+<script>
+  var cls;
+  function draw(){
+    var colours_text = document.getElementById("colours").value
+    var delimiter = document.getElementById("delimiter").value
+
+    var colours = colours_text.split(delimiter);
+
+    plotter = document.getElementById("plotter")
+    for (let i = 0; i < colours.length; i++) {
+      divvy = document.createElement("div")
+      divvy.setAttribute("class","shap")
+      divvy.setAttribute("onclick","rem(this)")
+      divvy.style.backgroundColor = colours[i]
+      plotter.append(divvy)
+    }
+    cls = colours
+  }
+  function rem(elem){
+    var torem = elem.style.backgroundColor
+    var res = [];
+    var j=0
+    for (let i = 0; i < cls.length; i++) {
+      if (cls[i]!=torem){
+        res[j++] = cls[i];
+      }
+    }
+    cls = res
+    var text = ""
+    for (let i = 0; i < res.length; i++) {
+      text+=res[i] + ","
+    }
+    console.log(text)
+
+    elem.parentNode.removeChild(elem)
+    document.getElementById("colours").value = text
+  }
+</script>
+</html>

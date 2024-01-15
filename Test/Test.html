@@ -9,14 +9,11 @@
 </body>
 
 <script>
+    let data = {color:'red'}
+    console.log(data.color)
 
-  function testing(a, b){
-    return a + b;
-  }
-  function test(){
-
-      a = new Array(2,4)
-      console.log(a)
-  }
+    let data1 = '{"color":"red"}'
+    var dt1 = JSON.parse(data1)
+    console.log(dt1.color)
 </script>
 </html>
